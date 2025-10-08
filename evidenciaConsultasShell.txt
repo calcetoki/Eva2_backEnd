@@ -1,0 +1,18 @@
+(InteractiveConsole)
+>>> from tareas.models import Tarea
+>>> Tarea.objects.all()
+<QuerySet [<Tarea: Tercera tarea>, <Tarea: Segunda tarea>, <Tarea: PrimeraTarea>]>
+>>> Tarea.objects.filter(prioridad=1)
+<QuerySet [<Tarea: PrimeraTarea>]>
+>>> t = Tarea.objects.first()
+>>> t.vigente
+True
+>>> Tarea.objects.values('id','titulo')
+<QuerySet [{'id': 4, 'titulo': 'Tercera tarea'}, {'id': 3, 'titulo': 'Segunda tarea'}, {'id': 2, 'titulo': 'PrimeraTarea'}]>
+>>> t = Tarea.objects.get(id=2)
+>>> t.delete()
+(1, {'tareas.Tarea': 1})
+>>> Tarea.objects.count()
+2
+>>> Tarea.objects.values('id','titulo')
+<QuerySet [{'id': 4, 'titulo': 'Tercera tarea'}, {'id': 3, 'titulo': 'Segunda tarea'}]>
